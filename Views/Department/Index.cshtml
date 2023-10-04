@@ -1,0 +1,37 @@
+﻿@model List<EXAMP.Entities.Department>
+@{
+    
+}
+<H1>Department Page</H1>
+<a asp-controller="Category" asp-action="Create" class="btn btn-primary"> Create new Department</a>
+<div class="col-6">
+    <table class="table">
+        <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.name</td>
+                    <td>
+
+                        <a href="@Url.ActionLink("Edit","Department",new{id=item.id})"
+                           class="btn btn-primary">Edit</a>
+                    </td>
+
+                    <td>
+
+                        <a href="@Url.ActionLink("Delete","Department",new{id=item.id})"
+                           onclick="return confirm('Bạn muốn xóa danh mục @item.name')"
+                           class="btn btn-primary">Delete</a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
